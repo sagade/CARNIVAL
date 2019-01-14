@@ -13,7 +13,8 @@ Imports:
     doParallel,
     igraph,
     tidyverse,
-    viper
+    viper,
+    shiny
 Suggests: knitr,
     rmarkdown,
 VignetteBuilder: knitr

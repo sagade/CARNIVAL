@@ -17,8 +17,8 @@ vignette: >
 - CARNIVAL requires IBM ILOG CPLEX to be pre-installed
 - The path to the interactive version of CPLEX needs to be specified in runCARNIVAL script
 - For Mac OS: the path is usually "~/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx/cplex" where the version of CPLEX (CPLEX_Studio1271) has to be changed accordingly
-- For Windows: --- to be tested ---
 - For Linux: --- to be tested ---
+- For Windows: "C:/Program Files/IBM/ILOG/CPLEX_Studio128/cplex/bin/x64_win64/cplex.exe" - Note: the current CARNIVAL implementation still doesn't support the running of system command in Windows (https://stat.ethz.ch/R-manual/R-devel/library/base/html/system.html)
 
 ## Running CARNIVAL
 
@@ -55,6 +55,7 @@ runCARNIVAL(CplexPath="~/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64
 - To run CARNIVAL with user-defined inputs, users have to prepare at least 1) user-defined prior knowledge network (netFile) and 2) user-defined measurement (measFile - here refers to TF normalised enrichment scores) while additional information i.e. target of perturbation  and additional weight e.g. pathway weights from PROGENy can additionally be provided as the variable inputFile and weightFile, respectively. 
 
 - To give an example, we'll manually plug in the input files from CARNIVAL's built-in example number 2 (SBVimprover-EGF). The input files could be directly retrieve from the CARNIVAL package. Once the input files are copied into the working directory, the input variables have to be assigned according to the filename. Also, the variable CARNIVAL_example has to be set to NULL in this case to execute the pipeline.
+- Note: The default optimisation time is set to 600 seconds (10 minutes) which generally returns a first result for most of the stand-alone computers which were tested. Please sit back and relax while waiting for the results.
 
 ```{r, message=FALSE, warning=FALSE}
 # rm(list=ls());cat("\014");if(length(dev.list())>0){dev.off()} # clean workspace
@@ -71,7 +72,8 @@ runCARNIVAL(CplexPath="~/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64
             inputFile="Ex2_inputs_SBV_EGF.txt",
             weightFile="Ex2_weights_SBV_EGF.txt",
             Result_dir="Results_CARNIVAL_Ex2",
-            CARNIVAL_example=NULL)
+            CARNIVAL_example=NULL
+            )
 ```
 
 - After the optimisation, the results are saved in the result folder on the working directory for further analyses.
@@ -85,3 +87,9 @@ Note that the pipeline as presented is the Standard CARNIVAL pipeline with known
 - To export and write all CPLEX variables into files: set the Export_all variable to TRUE (Export_all=T; recommended for debugging)
 - In addition, additional CPLEX parameters and alpha and beta weights in the objective function can also be manually assigned. More details can be obtained in the help section: ?runCARNIVAL
 
+Beside the exported model descriptions and figures, users can also visualise the overall network results in an R-Shiny application with the function 'shinyCARNIVAL'. This function requires the shiny package (available on CRAN) and the rcytoscape package which can be download here: https://github.com/cytoscape/cyjShiny/releases. The results from the CARNIVAL example 2 can for instance be visualed on R-Shiny using the following command.
+
+```{r, message=FALSE, warning=FALSE}
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1", graphLayout="breadthfirst")
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout="concentric", UP2GS=T)
+```

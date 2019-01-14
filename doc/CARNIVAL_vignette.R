@@ -24,5 +24,10 @@ runCARNIVAL(CplexPath="~/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64
             inputFile="Ex2_inputs_SBV_EGF.txt",
             weightFile="Ex2_weights_SBV_EGF.txt",
             Result_dir="Results_CARNIVAL_Ex2",
-            CARNIVAL_example=NULL)
+            CARNIVAL_example=NULL
+            )
+
+## ---- message=FALSE, warning=FALSE---------------------------------------
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1", graphLayout="breadthfirst")
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout="concentric", UP2GS=T)
 
