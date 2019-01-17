@@ -28,6 +28,6 @@ runCARNIVAL(CplexPath="~/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64
             )
 
 ## ---- message=FALSE, warning=FALSE---------------------------------------
-# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1", graphLayout="breadthfirst")
-# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout="concentric", UP2GS=T)
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1")
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout=1, UP2GS=T)
 

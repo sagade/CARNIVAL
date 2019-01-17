@@ -14,7 +14,8 @@ Imports:
     igraph,
     tidyverse,
     viper,
-    shiny
+    shiny,
+    visNetwork
 Suggests: knitr,
     rmarkdown,
 VignetteBuilder: knitr

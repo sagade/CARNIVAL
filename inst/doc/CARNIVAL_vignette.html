@@ -198,9 +198,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>To export and write all CPLEX variables into files: set the Export_all variable to TRUE (Export_all=T; recommended for debugging)</li>
 <li>In addition, additional CPLEX parameters and alpha and beta weights in the objective function can also be manually assigned. More details can be obtained in the help section: ?runCARNIVAL</li>
 </ul>
-<p>Beside the exported model descriptions and figures, users can also visualise the overall network results in an R-Shiny application with the function ‘shinyCARNIVAL’. This function requires the shiny package (available on CRAN) and the rcytoscape package which can be download here: <a href="https://github.com/cytoscape/cyjShiny/releases" class="uri">https://github.com/cytoscape/cyjShiny/releases</a>. The results from the CARNIVAL example 2 can for instance be visualed on R-Shiny using the following command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># shinyCARNIVAL(dir_name=&quot;Results_CARNIVAL_Ex1&quot;, graphLayout=&quot;breadthfirst&quot;)</span>
-<span class="co"># shinyCARNIVAL(dir_name=&quot;Results_CARNIVAL_Ex2&quot;, graphLayout=&quot;concentric&quot;, UP2GS=T)</span></code></pre></div>
+<p>Beside the exported model descriptions and figures, users can also visualise the overall network results in an R-Shiny application with the function ‘shinyCARNIVAL’. This function requires the shiny and visNetwork packages (available on CRAN). The results from the CARNIVAL examples 1 and 2 can for instance be visualed on R-Shiny using the following command.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># shinyCARNIVAL(dir_name=&quot;Results_CARNIVAL_Ex1&quot;)</span>
+<span class="co"># shinyCARNIVAL(dir_name=&quot;Results_CARNIVAL_Ex2&quot;, graphLayout=1;, UP2GS=T)</span></code></pre></div>
 </div>
 </div>
 

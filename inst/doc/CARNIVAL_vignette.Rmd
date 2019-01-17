@@ -87,9 +87,9 @@ Note that the pipeline as presented is the Standard CARNIVAL pipeline with known
 - To export and write all CPLEX variables into files: set the Export_all variable to TRUE (Export_all=T; recommended for debugging)
 - In addition, additional CPLEX parameters and alpha and beta weights in the objective function can also be manually assigned. More details can be obtained in the help section: ?runCARNIVAL
 
-Beside the exported model descriptions and figures, users can also visualise the overall network results in an R-Shiny application with the function 'shinyCARNIVAL'. This function requires the shiny package (available on CRAN) and the rcytoscape package which can be download here: https://github.com/cytoscape/cyjShiny/releases. The results from the CARNIVAL example 2 can for instance be visualed on R-Shiny using the following command.
+Beside the exported model descriptions and figures, users can also visualise the overall network results in an R-Shiny application with the function 'shinyCARNIVAL'. This function requires the shiny and visNetwork packages (available on CRAN). The results from the CARNIVAL examples 1 and 2 can for instance be visualed on R-Shiny using the following command.
 
 ```{r, message=FALSE, warning=FALSE}
-# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1", graphLayout="breadthfirst")
-# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout="concentric", UP2GS=T)
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex1")
+# shinyCARNIVAL(dir_name="Results_CARNIVAL_Ex2", graphLayout=1, UP2GS=T)
 ```

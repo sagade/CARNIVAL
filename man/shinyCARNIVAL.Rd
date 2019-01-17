@@ -5,8 +5,7 @@
 \title{\code{shinyCARNIVAL}}
 \usage{
 shinyCARNIVAL(dir_name, nrIntActInc = 1000, thresNodeAll = NULL,
-  thresEdgeAll = NULL, graphLayout = "concentric", UP2GS = F,
-  inverseCR = F)
+  thresEdgeAll = NULL, graphLayout = 0, UP2GS = F, inverseCR = F)
 }
 \arguments{
 \item{dir_name}{The directory name that stores CARNIVAL results}
@@ -17,7 +16,7 @@ shinyCARNIVAL(dir_name, nrIntActInc = 1000, thresNodeAll = NULL,
 
 \item{thresEdgeAll}{Minimal edge presence percentage to be shown on the graph}
 
-\item{graphLayout}{Defined graph layout: "cose", "breadthfirst", "concentric", "preset"}
+\item{graphLayout}{Defined igraph-style layout: 1=tree, 2=circle, 3=grid, 4=sphere, other=default[nicely]}
 
 \item{UP2GS}{Convert UniprotID to Gene Symbols to facilitate the interpretation}
 
