@@ -1,7 +1,7 @@
 # CBC implementation of CARNIVAL
 
 
-Here we show two simple exmples about how to run CARNIVAL with the free [CBC](https://projects.coin-or.org/Cbc) solver.
+Here we show two simple exmples (one toy and one real-case study) about how to run CARNIVAL with the free [CBC](https://projects.coin-or.org/Cbc) solver.
 
 **This repository it is not at it's final version and it will be constantly updated in the following weeks before merging it to the main
 CARNIVAL branch.**
@@ -32,7 +32,7 @@ executables can then be stored at any directory in the machine that the user wis
 
 The `example.R` script contains two examples about how to run CARNIVAL with the free CBC solver implementation.
 
-The first example consists on how tu run CARNIVAL-CBC with known perturbation inputs:
+The first example consists on how tu run CARNIVAL-CBC with known perturbation inputs over a toy case study:
 
 + [1] Loading CARNIVAL `R` package after having it installed as explained above.
 + [5] Setting name of the inputs file for the first example (modelling the effects of perturbation over specific proteins in the cell).
