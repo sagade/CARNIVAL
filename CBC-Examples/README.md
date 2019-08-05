@@ -36,8 +36,8 @@ The first example consists on how tu run CARNIVAL-CBC with known perturbation in
 
 + [1] Loading CARNIVAL `R` package after having it installed as explained above.
 + [5] Setting name of the inputs file for the first example (modelling the effects of perturbation over specific proteins in the cell).
-+ [6] Setting the name of the measurements file for the first example (in this case inferred TF activities from DOROTHeA).
-+ [7] Setting the name of the file containing signed and directed protein interactions (in this case the interactions were retrieved from [OmniPath](http://omnipathdb.org/) with proteins as uniprot ID's).
++ [6] Setting the name of the measurements file for the first example.
++ [7] Setting the name of the file containing signed and directed protein interactions.
 + [8] Setting the name of the directory where we can store the results we obtain.
 + [10] Running CARNIVAL-CBC for the first case-study (we make sure to specify the cbc solver as our solver to use: `solver = "cbc"` and also specify the path where we have stored our cbc solver: `solverPath = "~/Desktop/cbc"`).
 
