@@ -284,6 +284,8 @@ runCARNIVAL <- function(solverPath=NULL,
     
   } else {
     
+    resFile = paste0("results_cbc_", parallelIdx1, "_", parallelIdx2, ".txt")
+    
     cbc_command <- paste0(solverPath, " testFile_", parallelIdx1, "_", parallelIdx2, ".lp -seconds ", timelimit,
                           " -ratio ", mipGAP, " solve printi csv solu ", resFile)
     
