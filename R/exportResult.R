@@ -473,19 +473,19 @@ exportResult <- function(cplexSolutionFileName = cplexSolutionFileName, variable
       
       nodes[, 1] <- vars[idxNodes]
       nodes[, 2] <- as.numeric(values[idxNodes])
-      nodes[which(nodes[, 2]>0), 2] <- 1
+      # nodes[which(nodes[, 2]>0), 2] <- 1
       nodesUp[, 1] <- vars[idxNodesUp]
       nodesUp[, 2] <- as.numeric(values[idxNodesUp])
-      nodesUp[which(nodesUp[, 2]>0), 2] <- 1
+      # nodesUp[which(nodesUp[, 2]>0), 2] <- 1
       nodesDown[, 1] <- vars[idxNodesDown]
       nodesDown[, 2] <- as.numeric(values[idxNodesDown])
-      nodesDown[which(nodesDown[, 2]>0), 2] <- 1
+      # nodesDown[which(nodesDown[, 2]>0), 2] <- 1
       edgesUp[, 1] <- vars[idxEdgesUp]
       edgesUp[, 2] <- as.numeric(values[idxEdgesUp])
-      edgesUp[which(edgesUp[, 2]>0), 2] <- 1
+      # edgesUp[which(edgesUp[, 2]>0), 2] <- 1
       edgesDown[, 1] <- vars[idxEdgesDown]
       edgesDown[, 2] <- as.numeric(values[idxEdgesDown])
-      edgesDown[which(edgesDown[, 2]>0), 2] <- 1
+      # edgesDown[which(edgesDown[, 2]>0), 2] <- 1
       
       nodes <- matrix(data = "", nrow = length(idxNodes), ncol = 2)
       nodesUp <- matrix(data = "", nrow = length(idxNodesUp), ncol = 2)
