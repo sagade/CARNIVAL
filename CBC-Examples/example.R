@@ -1,11 +1,11 @@
 library(CARNIVAL)
 
 ##
-# Example with known inputs
-inputFile = "AREG.txt"
-measFile = "class_AREG.txt"
-netFile = "Omnipath_signed_Uniprot_0615.txt"
-Result_dir = "AREG_Result"
+# Toy example with known inputs
+inputFile = "Ex1_inputs_Toy.txt"
+measFile = "Ex1_measurements_Toy.txt"
+netFile = "Ex1_network_Toy.sif"
+Result_dir = "Ex1_Toy"
 
 results = runCARNIVAL(solverPath = "~/Desktop/cbc", netFile = netFile, measFile = measFile, inputFile = inputFile, CARNIVAL_example = NULL, timelimit = 3600, mipGAP = 0, solver = "cbc", Result_dir = Result_dir)
 
