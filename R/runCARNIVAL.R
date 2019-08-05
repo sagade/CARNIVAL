@@ -68,6 +68,7 @@ runCARNIVAL <- function(solverPath=NULL,
   # if(length(dev.list())>0){dev.off()} # clean figure
 
   # library(devtools);load_all()
+  library(readr)
 
   # print("-----------")
   # print(parallelIdx1)
@@ -283,53 +284,20 @@ runCARNIVAL <- function(solverPath=NULL,
     
   } else {
     
-    resFile = paste0("results_cbc_", parallelIdx1, "_", parallelIdx2, ".txt")
-    if(poolCap > 1){
-      
-      cbc_command <- paste0(solverPath, " testFile_", parallelIdx1, "_", parallelIdx2, ".lp -seconds ", timelimit,
-                            " -ratio ", mipGAP, " solve printi csv solu ", resFile)
-      
-      for(ii in 1:poolCap){
-        
-        cbc_command = paste0(cbc_command, " -nextbest best", ii, ".txt")
-        
-      }
-      
-      cbc_command = paste0(cbc_command, " solve printi csv solu bestSolutions.txt")
-      
-      system(cbc_command)
-      
-      resList = list()
-      
-      for(ii in 1:poolCap){
-        
-        res <- exportResult(cplexSolutionFileName = paste0("best", ii, ".txt"),
-                            variables = variables, pknList = pknList, conditionIDX = parallelIdx1,
-                            dir_name = dir_name, inputs=inputs,measurements=measurements,
-                            Export_all = Export_all,writeIndividualResults = T, solver = "cbc")
-        
-        resList[[length(resList)+1]] = res
-        
-      }
-      
-    } else {
-      
-      cbc_command <- paste0(solverPath, " testFile_", parallelIdx1, "_", parallelIdx2, ".lp -seconds ", timelimit,
-                            " -ratio ", mipGAP, " solve printi csv solu ", resFile)
-      
-      system(cbc_command)
-      
-      # library(readr)
-      # results_cbc <- read_csv("results_cbc.txt")
-      
-      res <- exportResult(cplexSolutionFileName = resFile,
-                          variables = variables, pknList = pknList, conditionIDX = parallelIdx1,
-                          dir_name = dir_name, inputs=inputs,measurements=measurements,
-                          Export_all = Export_all,writeIndividualResults = T, solver = "cbc")
-      
-      return(res)
-      
-    }
+    cbc_command <- paste0(solverPath, " testFile_", parallelIdx1, "_", parallelIdx2, ".lp -seconds ", timelimit,
+                          " -ratio ", mipGAP, " solve printi csv solu ", resFile)
+    
+    system(cbc_command)
+    
+    library(readr)
+    # results_cbc <- read_csv("results_cbc.txt")
+    
+    res <- exportResult(cplexSolutionFileName = resFile,
+                        variables = variables, pknList = pknList, conditionIDX = parallelIdx1,
+                        dir_name = dir_name, inputs=inputs,measurements=measurements,
+                        Export_all = Export_all,writeIndividualResults = T, solver = "cbc")
+    
+    return(res)
     
   }
   
