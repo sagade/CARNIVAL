@@ -103,7 +103,7 @@ runCARNIVAL <- function(inputObj=NULL,
                         alphaWeight=1,
                         betaWeight=0.2,
                         threads=0,
-                        cplexMemoryLimit=8,
+                        cplexMemoryLimit=8192,
                         clean_tmp_files=TRUE,
                         dir_name=NULL)
 {
