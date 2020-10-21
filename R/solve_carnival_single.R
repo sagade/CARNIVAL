@@ -8,6 +8,7 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
                                 mipGAP = mipGAP, poolrelGAP = poolrelGAP,
                                 limitPop = limitPop, poolCap = poolCap,
                                 poolIntensity = poolIntensity,
+                                cplexMemoryLimit = cplexMemoryLimit, 
                                 poolReplace = poolReplace,
                                 timelimit = timelimit,
                                 threads = threads,
@@ -23,6 +24,7 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
                            mipGAP = mipGAP, poolrelGAP = poolrelGAP,
                            limitPop = limitPop, poolCap = poolCap,
                            poolIntensity = poolIntensity,
+                           cplexMemoryLimit = cplexMemoryLimit, 
                            threads = threads,
                            poolReplace = poolReplace, timelimit = timelimit,
                            measWeights = measWeights, repIndex = repIndex,
@@ -37,17 +39,18 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
     if (Sys.info()[1]=="Windows") {
       file.copy(from = solverPath,to = getwd())
       system(paste0("cplex.exe -f cplexCommand_", 
-                    condition,"_",repIndex,".txt"))
+                    condition,"_", repIndex,".txt"))
       file.remove("cplex.exe")
     } else {
       system(paste0(solverPath, " -f cplexCommand_", 
-                    condition,"_",repIndex,".txt"))
+                    condition,"_", repIndex,".txt"))
     }
     
     ## Write result files in the results folder
     message("Saving results...")
     resList <- list()
-    if (file.exists(paste0("results_cplex_",condition,"_",repIndex,".txt"))) {
+    if (file.exists(paste0("results_cplex_", condition,"_", repIndex,".txt"))) {
+      
       for(i in seq_len(length(variables))){
         res <- exportResult(cplexSolutionFileName = paste0("results_cplex_",
                                                            condition,"_",
@@ -77,7 +80,7 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
       }
     }
     
-    cleanupCARNIVAL(condition = condition, repIndex = repIndex)
+    #cleanupCARNIVAL(condition = condition, repIndex = repIndex)
     
     ## Remove global variable 
     objs <- ls(pos = ".GlobalEnv")

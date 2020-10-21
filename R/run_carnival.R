@@ -103,21 +103,27 @@ runCARNIVAL <- function(inputObj=NULL,
                         alphaWeight=1,
                         betaWeight=0.2,
                         threads=0,
+                        cplexMemoryLimit=8,
+                        clean_tmp_files=TRUE,
                         dir_name=NULL)
 {
-
+  
   solver <- match.arg(solver)
+  
   res = checkInputs(solverPath = solverPath, netObj = netObj, measObj = measObj,
                     inputObj = inputObj, weightObj = weightObj,
                     timelimit = timelimit, mipGAP = mipGAP,
                     poolrelGAP = poolrelGAP, limitPop = limitPop,
                     poolCap = poolCap, poolIntensity = poolIntensity,
+                    cplexMemoryLimit = cplexMemoryLimit,
                     poolReplace = poolReplace, alphaWeight = alphaWeight,
                     betaWeight = betaWeight, dir_name = dir_name,
                     solver = solver, threads = threads)
-
-  cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)
-
+  
+  if (clean_tmp_files) {
+    cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)  
+  }
+  
   result = solveCARNIVAL(solverPath = solverPath, netObj = res$inputs$network,
                          measObj = res$measurements,
                          inputObj = res$inputs$inputs,
@@ -125,15 +131,20 @@ runCARNIVAL <- function(inputObj=NULL,
                          timelimit = timelimit, mipGAP = mipGAP,
                          poolrelGAP = poolrelGAP, limitPop = limitPop,
                          poolCap = poolCap, poolIntensity = poolIntensity,
+                         cplexMemoryLimit = cplexMemoryLimit, 
                          poolReplace = poolReplace, alphaWeight = alphaWeight,
                          betaWeight = betaWeight, dir_name = dir_name,
                          solver = solver,
                          threads = threads,
                          experimental_conditions = res$exp,
                          condition = res$condition, repIndex = res$repIndex)
-
-  cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)
-
+  
+  if (clean_tmp_files) {
+    cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)  
+  }
+  
   return(result)
-
+  
 }
+
+
