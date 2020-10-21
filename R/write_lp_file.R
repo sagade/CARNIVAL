@@ -6,7 +6,8 @@
 writeLPFile <- function(data = data, pknList = pknList, inputs = inputs,
                         alphaWeight=1, betaWeight=0.2, scores=scores,
                         mipGAP=0.1, poolrelGAP=0.01, limitPop=100, poolCap=100,
-                        poolIntensity=0, cplexMemoryLimit = "8GB", poolReplace=2, timelimit=1800,
+                        poolIntensity=0, cplexMemoryLimit = 8192, cplexTreeMemoryLimit=8192,
+                        poolReplace=2, timelimit=1800,
                         threads=threads, measWeights=NULL, repIndex, condition="") {
 
   options(scipen=999)
@@ -46,6 +47,7 @@ writeLPFile <- function(data = data, pknList = pknList, inputs = inputs,
                    limitPop=limitPop, poolCap=poolCap,
                    poolIntensity=poolIntensity, 
                    cplexMemoryLimit=cplexMemoryLimit, 
+                   cplexTreeMemoryLimit=cplexTreeMemoryLimit,
                    timelimit=timelimit,
                    threads=threads)
 

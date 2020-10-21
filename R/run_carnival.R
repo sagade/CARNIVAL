@@ -104,7 +104,8 @@ runCARNIVAL <- function(inputObj=NULL,
                         betaWeight=0.2,
                         threads=0,
                         cplexMemoryLimit=8192,
-                        clean_tmp_files=TRUE,
+                        cplexTreeMemoryLimit=8192,
+                        cleanTmpFiles=TRUE,
                         dir_name=NULL)
 {
   
@@ -116,11 +117,12 @@ runCARNIVAL <- function(inputObj=NULL,
                     poolrelGAP = poolrelGAP, limitPop = limitPop,
                     poolCap = poolCap, poolIntensity = poolIntensity,
                     cplexMemoryLimit = cplexMemoryLimit,
+                    cplexTreeMemoryLimit = cplexTreeMemoryLimit,
                     poolReplace = poolReplace, alphaWeight = alphaWeight,
                     betaWeight = betaWeight, dir_name = dir_name,
                     solver = solver, threads = threads)
   
-  if (clean_tmp_files) {
+  if (cleanTmpFiles) {
     cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)  
   }
   
@@ -132,6 +134,7 @@ runCARNIVAL <- function(inputObj=NULL,
                          poolrelGAP = poolrelGAP, limitPop = limitPop,
                          poolCap = poolCap, poolIntensity = poolIntensity,
                          cplexMemoryLimit = cplexMemoryLimit, 
+                         cplexTreeMemoryLimit = cplexTreeMemoryLimit,
                          poolReplace = poolReplace, alphaWeight = alphaWeight,
                          betaWeight = betaWeight, dir_name = dir_name,
                          solver = solver,
@@ -139,7 +142,7 @@ runCARNIVAL <- function(inputObj=NULL,
                          experimental_conditions = res$exp,
                          condition = res$condition, repIndex = res$repIndex)
   
-  if (clean_tmp_files) {
+  if (cleanTmpFiles) {
     cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)  
   }
   
