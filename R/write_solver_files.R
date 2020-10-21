@@ -44,7 +44,7 @@ writeSolverFiles <- function(condition=condition, repIndex=repIndex, oF=oF,
         cplexCommand, append = TRUE)
   write(paste0("set mip pool intensity ", poolIntensity), 
         cplexCommand, append = TRUE)
-  write(paste0("set mip limits treememory", cplexTreeMemoryLimit), 
+  write(paste0("set mip limits treememory ", cplexTreeMemoryLimit), 
         cplexCommand, append = TRUE)
   write(paste0("set timelimit ",timelimit), cplexCommand, append = TRUE)
   write(paste0("set workmem ", cplexMemoryLimit), cplexCommand, append = TRUE)
