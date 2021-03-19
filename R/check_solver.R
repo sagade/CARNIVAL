@@ -1,14 +1,14 @@
-## Run CARNIVAL pipeline using to the user-provided list of inputs or run 
+## Run CARNIVAL pipeline using to the user-provided list of inputs or run
 ## CARNIVAL built-in examples
-## Note: The pipeline requires either all required user-defined input variables 
-## (netObj and measObj) are set to NULL or CARNIVAL_example is set to NULL to 
+## Note: The pipeline requires either all required user-defined input variables
+## (netObj and measObj) are set to NULL or CARNIVAL_example is set to NULL to
 ## execute
 ##
 ## Enio Gjerga, 2020
 
 checkSolver <- function(solverPath = solverPath, solver = solver,
                         dir_name = dir_name){
-  
+
   if(!is.null(solverPath)){
     if(!is(solverPath, "character")){
       stop("SolverPath should be of type character")
@@ -18,22 +18,22 @@ checkSolver <- function(solverPath = solverPath, solver = solver,
       }
     }
   }
-  
+
   if(!is(solver, "character")){
     stop("solver should be of type character")
   } else {
     ## checking for solver validity (cplex/cbc/lpSolve)
-    valid_solver_list <- c("cplex", "cbc", "lpSolve")
+    valid_solver_list <- c("cplex", "cbc", "lpSolve", "gurobi")
     if (!(solver %in% valid_solver_list)){
-      stop(paste0("Select a valid solver option (", 
+      stop(paste0("Select a valid solver option (",
                   paste(valid_solver_list, collapse=", "), ")"))
     }
   }
-  
+
   if(!is.null(dir_name)){
     if(!is(dir_name, "character")){
       stop("dir_name should either be NULL or provided as a character")
     }
   }
-  
+
 }
