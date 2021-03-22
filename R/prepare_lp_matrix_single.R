@@ -7,9 +7,7 @@ prepareLPMatrixSingle <- function(variables = variables,
 
   mt = transformVariables(variables = variables, measObj = measObj)
 
-  lpFile = readr::read_csv(file = paste0("testFile_", 1, "_", 1, ".lp"))
-  
-  lpFile$`enter Problem` <- as.character(lpFile$`enter Problem`)
+  lpFile <- readr::read_csv(file = "testFile_1_1.lp", col_names = F)[[1]]
 
   f.obj <- transformObjectiveFunction(mt = mt, lpFile = lpFile)
 
@@ -21,15 +19,15 @@ prepareLPMatrixSingle <- function(variables = variables,
   f.dir <- c(ff1$dir, ff2$dir, ff3$dir)
   f.rhs <- c(ff1$rhs, ff2$rhs, ff3$rhs)
 
-  idx1 <- which(lpFile$`enter Problem`=="Binaries")
-  idx2 <- which(lpFile$`enter Problem`=="Generals")
-  idx3 <- which(lpFile$`enter Problem`=="End")
-  binaryVar <- lpFile$`enter Problem`[seq(from = idx1+1, to = idx2-1, by = 1)]
+  idx1 <- which(lpFile=="Binaries")
+  idx2 <- which(lpFile=="Generals")
+  idx3 <- which(lpFile=="End")
+  binaryVar <- lpFile[seq(from = idx1+1, to = idx2-1, by = 1)]
   bins <- c()
   for(ii in seq_len(length(binaryVar))){
     bins <- c(bins, which(mt[, 1]==binaryVar[ii]))
   }
-  integerVar <- lpFile$`enter Problem`[seq(from = idx2+1, to = idx3-1, by = 1)]
+  integerVar <- lpFile[seq(from = idx2+1, to = idx3-1, by = 1)]
   ints <- c()
   for(ii in seq_len(length(integerVar))){
     ints <- c(ints, which(mt[, 1]==integerVar[ii]))

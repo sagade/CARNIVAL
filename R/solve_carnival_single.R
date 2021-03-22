@@ -112,9 +112,6 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
                                  " testFile_", 1, "_", 1, ".lp ")
 
         # We remove the first line in the lp file, as it is not part of the lp formats
-        lines = readLines(file("testFile_1_1.lp"))
-        write(lines[3:length(lines)], "testFile_1_1.lp")
-
         system(gurobi_command)
 
         res <- exportResult(cplexSolutionFileName = resFile,
@@ -141,7 +138,7 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
                           conditionIDX = 1)
     }
 
-    # cleanupCARNIVAL(condition = condition, repIndex = repIndex)
+    cleanupCARNIVAL(condition = condition, repIndex = repIndex)
 
     if (!is.null(res)) {
         if(!is.null(dir_name)){
