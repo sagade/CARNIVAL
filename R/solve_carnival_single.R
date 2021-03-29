@@ -101,6 +101,7 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
     } else if (solver=="gurobi") {
         resFile = paste0("results_gurobi_", 1, "_", 1, ".sol")
 
+        # no equivalants for poolIntensity, poolReplace parameters in gurobi
         gurobi_command <- paste0(solverPath,
                                  " TimeLimit=", timelimit,
                                  " MIPGAP=", mipGAP,
@@ -111,7 +112,6 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
                                  " ResultFile=", resFile,
                                  " testFile_", 1, "_", 1, ".lp ")
 
-        # We remove the first line in the lp file, as it is not part of the lp formats
         system(gurobi_command)
 
         res <- exportResult(cplexSolutionFileName = resFile,
