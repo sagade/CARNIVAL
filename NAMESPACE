@@ -3,6 +3,7 @@
 export(runCARNIVAL)
 import(readr)
 import(dplyr)
+import(stringr)
 importFrom(tibble, as_tibble)
 import(Category)
 import(ggplot2)

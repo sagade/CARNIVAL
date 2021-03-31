@@ -36,6 +36,7 @@ Depends:
 Imports:
     readr,
     dplyr,
+    stringr,
     tibble,
     Category,
     ggplot2,
