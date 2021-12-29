@@ -16,28 +16,30 @@ exportResult <- function(cplexSolutionFileName = cplexSolutionFileName,
                              pknList = pknList, inputs = inputs, 
                              measurements = measurements)
     
-  } else {
-    
-    if(solver=="cbc"){
+  } else if(solver=="cbc") {
       
       RES <- exportResultCBC(cplexSolutionFileName = cplexSolutionFileName, 
                              variables = variables, conditionIDX = conditionIDX, 
                              pknList = pknList, inputs = inputs, 
                              measurements = measurements)
       
-      return(RES)
+  } else if (solver == "gurobi") {
+
+      RES <- exportResultGurobi(cplexSolutionFileName = cplexSolutionFileName, 
+				variables = variables, conditionIDX = conditionIDX, 
+				pknList = pknList, inputs = inputs, 
+				measurements = measurements)
       
-    } else {
+  } else {
       
       RES <- exportResultLPSolve(variables = variables, 
                                  conditionIDX = conditionIDX, pknList = pknList,
                                  inputs = inputs, measurements = measurements, 
                                  lpSolution = lpSolution, mt = mt)
       
-      return(RES)
       
-    }
-    
   }
-  
+  return(RES)
+    
 }
+  

@@ -12,8 +12,6 @@ writeSolverFiles <- function(condition=condition, repIndex=repIndex, oF=oF,
   
   ## write the .lp file
   data = paste0("testFile_", condition,"_",repIndex,".lp")
-  write("enter Problem", data)
-  write("", data, append = TRUE)
   write("Minimize", data, append = TRUE)
   write(oF, data, append = TRUE)
   write("Subject To", data, append = TRUE)
