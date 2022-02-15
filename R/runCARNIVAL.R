@@ -33,6 +33,8 @@
 #'@param betaWeight Objective function: weight for node penalty (defaul: 0.2)
 #'@param threads CPLEX parameter: Number of threads to use
 #'default: 0 for maximum number possible threads on system
+#'@param seed Gurobi parameter: random seed for the optimization process. 
+#'           Default to 0 (this is also the default of the Gurobi client gurobi_cl).
 #'@param dir_name Specify directory name to store results. by default set to
 #'NULL
 #'
@@ -103,6 +105,7 @@ runCARNIVAL <- function(inputObj=NULL,
                         alphaWeight=1,
                         betaWeight=0.2,
                         threads=0,
+                        seed=0,
                         dir_name=NULL)
 {
 
@@ -114,7 +117,7 @@ runCARNIVAL <- function(inputObj=NULL,
                     poolCap = poolCap, poolIntensity = poolIntensity,
                     poolReplace = poolReplace, alphaWeight = alphaWeight,
                     betaWeight = betaWeight, dir_name = dir_name,
-                    solver = solver, threads = threads)
+                    solver = solver, threads = threads, seed = seed)
 
   cleanupCARNIVAL(condition = res$condition, repIndex = res$repIndex)
 
@@ -129,6 +132,7 @@ runCARNIVAL <- function(inputObj=NULL,
                          betaWeight = betaWeight, dir_name = dir_name,
                          solver = solver,
                          threads = threads,
+                         seed = seed,
                          experimental_conditions = res$exp,
                          condition = res$condition, repIndex = res$repIndex)
 

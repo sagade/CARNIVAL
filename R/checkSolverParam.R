@@ -10,6 +10,7 @@ checkSolverParam <- function(timelimit=timelimit,
                              poolIntensity=poolIntensity,
                              poolReplace=poolReplace,
                              threads=threads,
+                             seed=seed,
                              alphaWeight=alphaWeight,
                              betaWeight=betaWeight){
   
@@ -106,6 +107,14 @@ checkSolverParam <- function(timelimit=timelimit,
       stop("CPLEX parameter: Please set the number of threads to 0 for automatic
            detection or any value > 0 for a specific number of threads.")
     }
+  }
+  
+  if(!is.null(seed)) {
+    if(!is.integer(seed) || seed < 0) {
+      stop("Gurobi parameter 'seed' needs to be an integer >= 0.")
+    }
+  } else {
+    seed <- 0
   }
 
   if(is.null(poolReplace)){

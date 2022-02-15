@@ -17,6 +17,7 @@ checkInputs <- function(solverPath=NULL,
                         alphaWeight=1,
                         betaWeight=0.2,
                         threads=0,
+                        seed=0,
                         dir_name=dir_name,
                         solver="lpSolve"){
   
@@ -30,6 +31,7 @@ checkInputs <- function(solverPath=NULL,
                         poolrelGAP=poolrelGAP, limitPop=limitPop, poolCap=poolCap,
                         poolIntensity=poolIntensity, poolReplace=poolReplace,
                         threads=threads,
+                        seed=seed,
                         alphaWeight=alphaWeight, betaWeight=betaWeight)
 
   if(weightObj[1]!="NULL"){
