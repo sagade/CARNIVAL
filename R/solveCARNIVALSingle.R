@@ -86,8 +86,13 @@ solveCARNIVALSingle <- function(data = data, pknList = pknList,
 
         resFile = paste0("results_cbc_", 1, "_", 1, ".txt")
 
-        cbc_command <- paste0(solverPath, " testFile_", 1, "_", 1, ".lp -seconds ", timelimit,
-                              " -ratio ", poolrelGAP, " solve printi csv solu ", resFile)
+        cbc_command <- paste0(solverPath, 
+                              " testFile_1_1.lp",
+                              " -seconds ", timelimit,
+                              " -ratio ", poolrelGAP,
+                              " -threads ", threads,
+                              " randomCbcSeed ", seed,
+                              " solve printi csv solu ", resFile)
 
         system(cbc_command)
 
